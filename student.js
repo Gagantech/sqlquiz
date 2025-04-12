@@ -385,8 +385,22 @@ submitBtn.addEventListener("click", () => {
   onAuthStateChanged(auth, async (user) => {
     if (user) {
       const email = user.email;
+      const name = "";
+      if(email === "nidheeshcsuc@gmail.com")
+      {
+        name = "Nidheesh";
+      } else if(email === "amalom777@gmail.com"){
+        name = "Amal";
+      } else if(email === "ansetdas@gmail.com"){
+        name = "Anse";
+      } else if(email === "febinchundakkattil@gmail.com"){
+        name = "Febin";
+      } else {
+        name = "User"
+      }
       try {
         await addDoc(collection(db, "quizScores"), {
+          name: name,
           email: email,
           score: score,
           total: questions.length,
