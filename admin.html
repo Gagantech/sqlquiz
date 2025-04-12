@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard - Event Management</title>
+  <link rel="stylesheet" href="admin.css" />
 </head>
 <body>
-    <p>Admin</p>
+  <nav class="navbar">
+    <img src="sqlLogo.png" alt="Logo" class="logo-img" />
+    <div class="logo">SQL<span>QUIZ</span></div>
+    <div class="greeting" id="user-greeting"><b>Hello,</b></div>
+    <ul class="nav-links">
+      <li><a href="#" data-section="block" class="active">All Score</a></li>
+      <button id="logout-btn" class="logout-btn">Logout</button>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="block" class="section active">
+      <h1>All Score</h1>
+      <div id="blockings-list"></div>
+    </section>
+  </main>
+
+  <script type="module" src="admin.js"></script>
 </body>
 </html>

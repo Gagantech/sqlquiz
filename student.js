@@ -42,11 +42,6 @@ const questions = [
       answer: 0
     },
     {
-      question: "How do you rename a column in the output using SQL?",
-      options: ["RENAME name TO 'NewName'", "SELECT name AS NewName;", "SELECT name FROM NewName;", "SHOW name = NewName;"],
-      answer: 1
-    },
-    {
       question: "What is the result of SELECT 1+1;?",
       options: ["11", "2", "1", "Error"],
       answer: 1
@@ -87,19 +82,9 @@ const questions = [
       answer: 2
     },
     {
-      question: "Which is true about DISTINCT and GROUP BY?",
-      options: ["Both always give same output", "GROUP BY gives unique rows only", "DISTINCT is used to remove duplicate rows", "GROUP BY cannot be used with SELECT"],
-      answer: 2
-    },
-    {
       question: "What does SELECT DISTINCT email FROM users; do?",
       options: ["Deletes duplicate emails", "Selects all emails", "Returns only unique emails", "Groups emails"],
       answer: 2
-    },
-    {
-      question: "Can you use DISTINCT with ORDER BY?",
-      options: ["No", "Yes", "Only if ASC is used", "Only for numeric columns"],
-      answer: 1
     },
     {
       question: "What does DISTINCT remove?",
@@ -143,17 +128,12 @@ const questions = [
     },
     {
       question: "Which query orders products by price ascending?",
-      options: ["SELECT product_name ORDER BY price;", "SORT product_name BY price;", "ORDER price FROM products;", "SELECT price ASCENDING;"],
+      options: ["SELECT product_name from products ORDER BY price;", "SORT product_name BY price;", "ORDER price FROM products;", "SELECT price ASCENDING;"],
       answer: 0
     },
     {
       question: "Which is correct for descending sort of books by title?",
       options: ["SELECT title FROM books ORDER BY title DESC;", "SELECT DESC title FROM books;", "ORDER title FROM books DESC;", "SELECT title DESCENDING FROM books;"],
-      answer: 0
-    },
-    {
-      question: "Can you order by a column not in SELECT?",
-      options: ["Yes", "No", "Only if it's indexed", "Only in PostgreSQL"],
       answer: 0
     },
     {
@@ -187,24 +167,9 @@ const questions = [
       answer: 1
     },
     {
-      question: "Which keyword checks for NULL?",
-      options: ["= NULL", "IS NULL", "IS NOT", "NULL ="],
-      answer: 1
-    },
-    {
-      question: "Which finds all emails that are NOT NULL?",
-      options: ["SELECT email FROM users WHERE email NOT NULL;", "SELECT email FROM users WHERE email IS NOT NULL;", "SELECT * WHERE email != NULL;", "SELECT email WHERE NOT NULL;"],
-      answer: 1
-    },
-    {
       question: "Can WHERE filter numeric values?",
       options: ["No", "Yes", "Only with AND", "Only if primary key"],
       answer: 1
-    },
-    {
-      question: "What is true about WHERE clause?",
-      options: ["Comes after SELECT", "Comes after ORDER BY", "Deletes rows", "Shows table names"],
-      answer: 0
     },
     {
       question: "Which query selects customers where city is 'Chennai'?",
@@ -233,7 +198,7 @@ const questions = [
     },
     {
       question: "Unique emails sorted alphabetically:",
-      options: ["SELECT email FROM users;", "SELECT DISTINCT email ORDER BY email;", "SELECT email ORDER BY name;", "SELECT * WHERE email IS NOT NULL;"],
+      options: ["SELECT email FROM users;", "SELECT DISTINCT email from users ORDER BY email;", "SELECT email ORDER BY name;", "SELECT * WHERE email IS NOT NULL;"],
       answer: 1
     },
     {
@@ -243,7 +208,7 @@ const questions = [
     },
     {
       question: "All orders sorted by date:",
-      options: ["SELECT * ORDER BY order_date;", "SELECT * SORT BY order_date;", "GET orders BY date;", "ORDER * BY order_date;"],
+      options: ["SELECT * from orders ORDER BY order_date;", "SELECT * SORT BY order_date;", "GET orders BY date;", "ORDER * BY order_date;"],
       answer: 0
     },
     {
@@ -259,11 +224,6 @@ const questions = [
     {
       question: "All students with grade A:",
       options: ["SELECT * FROM students WHERE grade = 'A';", "SELECT * WHERE grade = 'A';", "GET grade = 'A';", "SELECT grade A FROM students;"],
-      answer: 0
-    },
-    {
-      question: "Movie names by release year (desc):",
-      options: ["SELECT movie_name ORDER BY release_year DESC;", "SELECT * FROM movies WHERE release_year;", "ORDER BY year FROM movies;", "SELECT * DESC BY release_year;"],
       answer: 0
     }
   ];

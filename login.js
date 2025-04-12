@@ -53,9 +53,9 @@ loginForm.addEventListener("submit", async (e) => {
     const user = userCredential.user;
 
     // Admin redirect
-    if (email === "admin@gmail.com") {
+    if (email == "admin@gmail.com") {
       showToast("Admin login successful!", "success");
-      setTimeout(() => window.location.href = "admin.html", 1500);
+      setTimeout(() => window.location.href = "admin.html", 0);
     } else {
       // Student login
       showToast("User login successful!", "success");
