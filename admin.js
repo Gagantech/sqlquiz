@@ -106,7 +106,6 @@ async function loadAllBlockings() {
       card.className = "booking-card";
       card.innerHTML = `
         <h3>${data.email || 'Unknown Email'}</h3>
-        <p><strong>Name:</strong> ${data.name ?? 'N/A'}</p>
         <p><strong>Score:</strong> ${data.score ?? 'N/A'}</p>
       `;
       listContainer.appendChild(card);
