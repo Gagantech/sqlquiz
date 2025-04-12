@@ -45,7 +45,7 @@ onAuthStateChanged(auth, async (user) => {
     const userSnap = await getDoc(userRef);
 
     const userData = userSnap.data();
-    greetingEl.textContent = `Hello, ${userData?.name || "User"}`;
+    greetingEl.textContent = `Hello, ${userData?.name || "Admin"}`;
 
     // 🚨 Temporarily bypass role check
     loadAllBlockings(); 
