@@ -122,16 +122,6 @@ const questions = [
       answer: 2
     },
     {
-      question: "Can ORDER BY be used on multiple columns?",
-      options: ["No", "Yes", "Only with WHERE", "Only with DISTINCT"],
-      answer: 1
-    },
-    {
-      question: "Which query orders products by price ascending?",
-      options: ["SELECT product_name from products ORDER BY price;", "SORT product_name BY price;", "ORDER price FROM products;", "SELECT price ASCENDING;"],
-      answer: 0
-    },
-    {
       question: "Which is correct for descending sort of books by title?",
       options: ["SELECT title FROM books ORDER BY title DESC;", "SELECT DESC title FROM books;", "ORDER title FROM books DESC;", "SELECT title DESCENDING FROM books;"],
       answer: 0
@@ -191,6 +181,32 @@ const questions = [
       options: ["SELECT name FROM students ORDER BY roll_number;", "SELECT name BY roll_number;", "SELECT roll_number ORDER BY name;", "SORT name FROM students;"],
       answer: 0
     },
+
+  {
+    question: "Which of the following is a comparison operator in SQL?",
+    options: ["AND", "LIKE", "=", "BETWEEN"],
+    answer: 2
+  },
+  {
+    question: "What does the != operator do in SQL?",
+    options: ["Assigns a value", "Checks for equality", "Checks for inequality", "Performs addition"],
+    answer: 2
+  },
+  {
+    question: "Which of the following operators is used to check if a value lies within a range?",
+    options: ["IN", "BETWEEN", "LIKE", "IS"],
+    answer: 1
+  },
+  {
+    question: "Which operator is used to combine multiple conditions in a WHERE clause where at least one must be true?",
+    options: ["AND", "NOT", "ALL", "OR"],
+    answer: 3
+  },
+  {
+    question: "Which operator is used to check if a value matches any value in a list?",
+    options: ["IN", "=", "IS", "BETWEEN"],
+    answer: 0
+  },
     {
       question: "Find product_name where category is 'Electronics':",
       options: ["SELECT product_name FROM products WHERE category = 'Electronics';", "GET products FROM Electronics;", "SELECT * WHERE category = Electronics;", "SELECT name WHERE category = 'Electronics';"],
@@ -225,7 +241,97 @@ const questions = [
       question: "All students with grade A:",
       options: ["SELECT * FROM students WHERE grade = 'A';", "SELECT * WHERE grade = 'A';", "GET grade = 'A';", "SELECT grade A FROM students;"],
       answer: 0
-    }
+    },
+{
+    question: "Which SQL clause is used to group rows that have the same values?",
+    options: ["WHERE", "ORDER BY", "GROUP BY", "HAVING"],
+    answer: 2
+  },
+  {
+    question: "Which clause is used to filter groups created by GROUP BY?",
+    options: ["WHERE", "HAVING", "ORDER BY", "LIMIT"],
+    answer: 1
+  },
+  {
+    question: "Which query shows total salary per department?",
+    options: [
+      "SELECT department, SUM(salary) FROM employees;",
+      "SELECT department, salary FROM employees GROUP BY department;",
+      "SELECT department, SUM(salary) FROM employees GROUP BY department;",
+      "SELECT SUM(salary) GROUP BY department FROM employees;"
+    ],
+    answer: 2
+  },
+  {
+    question: "What will this query return? SELECT dept, COUNT(*) FROM staff GROUP BY dept HAVING COUNT(*) > 5;",
+    options: [
+      "All departments",
+      "Departments with more than 5 employees",
+      "Only 5 departments",
+      "Error in query"
+    ],
+    answer: 1
+  },
+  {
+    question: "Which clause comes first in SQL syntax?",
+    options: ["GROUP BY", "HAVING", "WHERE", "ORDER BY"],
+    answer: 2
+  },
+  {
+    question: "What is a subquery in SQL?",
+    options: [
+      "A query that deletes data",
+      "A query within another query",
+      "A query that updates records",
+      "A query without a WHERE clause"
+    ],
+    answer: 1
+  },
+  {
+    question: "Which keyword is commonly used with subqueries?",
+    options: ["JOIN", "UNION", "IN", "LIMIT"],
+    answer: 2
+  },
+  {
+    question: "Which query uses a subquery to find employees in the same department as 'John'?",
+    options: [
+      "SELECT * FROM employees WHERE department = 'John';",
+      "SELECT * FROM employees WHERE department = (SELECT department FROM employees WHERE name = 'John');",
+      "SELECT * FROM employees IN (SELECT name FROM employees);",
+      "SELECT department FROM employees GROUP BY name;"
+    ],
+    answer: 1
+  },
+  {
+    question: "Where can subqueries be placed in a SQL statement?",
+    options: [
+      "Only in SELECT clause",
+      "Only in WHERE clause",
+      "Only in FROM clause",
+      "In SELECT, FROM, or WHERE clause"
+    ],
+    answer: 3
+  },
+  {
+    question: "Which query finds the highest salary using a subquery?",
+    options: [
+      "SELECT MAX(salary) FROM employees;",
+      "SELECT salary FROM employees WHERE salary = (SELECT MAX(salary) FROM employees);",
+      "SELECT salary FROM employees;",
+      "SELECT * FROM employees GROUP BY salary;"
+    ],
+    answer: 1
+  },
+  {
+    question: "Which data type is used to store date values in SQL?",
+    options: ["DATE", "VARCHAR", "NUMBER", "TIME"],
+    answer: 0
+  },
+  {
+    question: "Which constraint ensures that a column cannot have NULL values?",
+    options: ["UNIQUE", "CHECK", "NOT NULL", "PRIMARY KEY"],
+    answer: 2
+  }
   ];
   
  // DOM elements
