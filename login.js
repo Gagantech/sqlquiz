@@ -55,7 +55,7 @@ loginForm.addEventListener("submit", async (e) => {
     // Admin redirect
     if (email == "admin@gmail.com") {
       showToast("Admin login successful!", "success");
-      setTimeout(() => window.location.href = "admin.html", 0);
+      setTimeout(() => window.location.href = "admin.html", 1500);
     } else {
       // Student login
       showToast("User login successful!", "success");

@@ -9,18 +9,20 @@ import {
   doc,
   getDoc,
   collection,
-  getDocs
+  getDocs,
+  query,
+  orderBy
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 
 // ✅ Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyC2V8c3jz9_9pHQAsERZp-rEGh7-_Co9nM",
-  authDomain: "eventmanagement-31f6c.firebaseapp.com",
-  projectId: "eventmanagement-31f6c",
-  storageBucket: "eventmanagement-31f6c.appspot.com",
-  messagingSenderId: "257752741631",
-  appId: "1:257752741631:web:74df84b10a15485db0feca",
-  measurementId: "G-DBJ84RLTNY"
+  apiKey: "AIzaSyDsphs9Uhgwxr5ygWO-_tGu24uWQeB7u4Y",
+  authDomain: "sql-quiz-9b114.firebaseapp.com",
+  projectId: "sql-quiz-9b114",
+  storageBucket: "sql-quiz-9b114.appspot.com",
+  messagingSenderId: "631979981590",
+  appId: "1:631979981590:web:f1ca8377cf3b70fd07ee37",
+  measurementId: "G-FX4X08H4QZ"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -42,24 +44,17 @@ onAuthStateChanged(auth, async (user) => {
     const userRef = doc(db, "users", user.uid);
     const userSnap = await getDoc(userRef);
 
-    if (!userSnap.exists()) {
-      greetingEl.textContent = "Hello";
-      return;
-    }
-
     const userData = userSnap.data();
-    greetingEl.textContent = `Hello, ${userData.name || "Admin"}`;
+    greetingEl.textContent = `Hello, ${userData?.name || "User"}`;
 
-    if (userData.role === "admin") {
-      loadAllBlockings();
-    } else {
-      listContainer.innerHTML = "<p>You do not have permission to view this page.</p>";
-    }
+    // 🚨 Temporarily bypass role check
+    loadAllBlockings(); 
   } catch (err) {
     console.error("Auth check error:", err);
     listContainer.innerHTML = "<p>Error loading user info.</p>";
   }
 });
+
 
 // ✅ Logout
 document.getElementById("logout-btn").addEventListener("click", () => {
@@ -86,33 +81,38 @@ navLinks.forEach(link => {
   });
 });
 
-// ✅ Load All Bookings (for admin)
+// ✅ Load All Quiz Scores (for admin)
 async function loadAllBlockings() {
-  listContainer.innerHTML = "<p>Loading blockings...</p>";
+  console.log("Loading scores...");
+  listContainer.innerHTML = "<p>Loading quiz scores...</p>";
 
   try {
-    const snapshot = await getDocs(collection(db, "bookedEvents"));
+    const scoresQuery = query(collection(db, "quizScores"), orderBy("score", "desc"));
+    const snapshot = await getDocs(scoresQuery);
+
+    console.log("Snapshot size:", snapshot.size);
+
     if (snapshot.empty) {
-      listContainer.innerHTML = "<p>No blockings found.</p>";
+      listContainer.innerHTML = "<p>No scores found.</p>";
       return;
     }
 
     listContainer.innerHTML = "";
     snapshot.forEach(doc => {
       const data = doc.data();
+      console.log("Score Doc:", data);
+
       const card = document.createElement("div");
       card.className = "booking-card";
       card.innerHTML = `
-        <h3>${data.eventType || 'Event'}</h3>
-        <p><strong>Customer Name:</strong> ${data.userName || 'N/A'}</p>
-        <p><strong>Date:</strong> ${data.date || 'N/A'}</p>
-        <p><strong>Place:</strong> ${data.city || data.location || 'N/A'}</p>
-        <p><strong>Status:</strong> ${data.status || 'Unknown'}</p>
+        <h3>${data.email || 'Unknown Email'}</h3>
+        <p><strong>Score:</strong> ${data.score ?? 'N/A'}</p>
       `;
       listContainer.appendChild(card);
     });
   } catch (err) {
-    console.error("Error loading blockings:", err);
-    listContainer.innerHTML = "<p>Error loading blockings.</p>";
+    console.error("Error loading quiz scores:", err);
+    listContainer.innerHTML = "<p>Error loading quiz scores.</p>";
   }
 }
+
